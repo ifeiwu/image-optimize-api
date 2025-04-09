@@ -1,0 +1,7 @@
+{
+	"require": {
+		"cloudtay/ripple": "^1.0",
+		"cloudtay/ripple-http": "^1.0",
+		"spatie/image-optimizer": "^1.8"
+	}
+}
