@@ -1,10 +1,8 @@
 <?php
-define('ROOT_PATH', dirname(__DIR__) . '/');
-
 $api_uri = 'http://192.168.31.5';
 $api_key = 'your_api_key';
-$source_image = ROOT_PATH . 'images/test.jpg';
-$target_image = ROOT_PATH . 'output/test.jpg';
+$source_image = __DIR__ . '/image/test.jpg';
+$target_image = __DIR__ . '/output/test.jpg';
 
 try {
     $file_mime = mime_content_type($source_image);

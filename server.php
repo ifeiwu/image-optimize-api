@@ -1,14 +1,14 @@
 <?php
-require_once __DIR__ . '/vendor/autoload.php';
-
 define('ROOT_PATH', __DIR__ . '/');
+
+require_once ROOT_PATH . 'vendor/autoload.php';
 
 // 所有错误和异常记录
 ini_set('error_reporting', E_ALL & ~E_WARNING & ~E_NOTICE & ~E_DEPRECATED);
 ini_set('display_errors', false);
 ini_set('ignore_repeated_errors', true);
 ini_set('log_errors', true);
-ini_set('error_log', ROOT_PATH . 'logs/error.log');
+ini_set('error_log', ROOT_PATH . 'error.log');
 
 use Ripple\Http\Server;
 use Ripple\Http\Server\Request;
@@ -29,18 +29,16 @@ $server->onRequest(static function (Request $request) {
         // 注意：目前暂时不使用这里响应输出图片，因为部署到服务器获取图片有问题。
         // 目录前解决方式：开启 PHP 自带服务来获取图片：/image.php?filename=/uploads/67ed44843b51c.jpg
         // 访问压缩后的图片
-        /*if (stripos($uri, '/uploads') !== false) {
-            $file_path = ROOT_PATH . $uri;
-            if (file_exists($file_path)) {
-                $info = getimagesize($file_path);
-                $content = file_get_contents($file_path);
-                // 响应输出图片
-                $request->respond($content, [
-                    'Content-Type' => $info['mime']
-                ]);
-            } else {
-                $request->respond('File not found', [], 404);
-            }
+        /*$file_path = ROOT_PATH . $uri;
+        if (file_exists($file_path)) {
+            $info = getimagesize($file_path);
+            $content = file_get_contents($file_path);
+            // 响应输出图片
+            $request->respond($content, [
+                'Content-Type' => $info['mime']
+            ]);
+        } else {
+            $request->respond('File not found', [], 404);
         }*/
     } elseif ($method == 'POST') {
         // 请求令牌验证
@@ -57,7 +55,7 @@ $server->onRequest(static function (Request $request) {
         $file = $request->FILES['files'][0];
         if ($file) {
             // 创建上传目录
-            $upload_dir = 'uploads';
+            $upload_dir = 'upload';
             $upload_path = ROOT_PATH . "{$upload_dir}";
             if (!is_dir($upload_path)) {
                 mkdir($upload_path, 0755, true);
