@@ -40,6 +40,7 @@ docker run -d --restart=unless-stopped --name image-optimize-api -p 8182:8182 -p
 
 **查看[完整示例](https://github.com/ifeiwu/image-optimize-api/tree/main/example)**
 
+<img src="example.png" alt="example">
 
 ## 技术栈
 * [ImageOptimizer](https://github.com/spatie/image-optimizer)
