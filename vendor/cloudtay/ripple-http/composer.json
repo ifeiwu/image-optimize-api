@@ -1,0 +1,33 @@
+{
+  "name": "cloudtay/ripple-http",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "cclilshy",
+      "email": "jingnigg@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Ripple\\Http\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=8.1",
+    "ext-sockets": "*",
+    "cloudtay/ripple": "^1.0",
+    "guzzlehttp/guzzle": "*",
+    "symfony/http-foundation": "*"
+  },
+  "require-dev": {
+    "ext-posix": "*",
+    "ext-pcntl": "*",
+    "ext-curl": "*",
+    "ext-parallel": "*",
+    "ext-zlib": "*",
+    "phpunit/phpunit": "*",
+    "friendsofphp/php-cs-fixer": "*"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

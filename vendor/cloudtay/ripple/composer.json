@@ -1,0 +1,51 @@
+{
+  "name": "cloudtay/ripple",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Ripple\\": "src/"
+    },
+    "files": [
+      "src/functions.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "cclilshy",
+      "email": "jingnigg@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=8.1",
+    "ext-sockets": "*",
+    "ext-openssl": "*",
+    "psr/http-message": "*",
+    "revolt/event-loop": "^1.0"
+  },
+  "require-dev": {
+    "ext-posix": "*",
+    "ext-pcntl": "*",
+    "ext-curl": "*",
+    "ext-parallel": "*",
+    "ext-zlib": "*",
+    "phpunit/phpunit": "*",
+    "friendsofphp/php-cs-fixer": "^3.68"
+  },
+  "suggest": {
+    "ext-posix": "For better signal handling",
+    "ext-pcntl": "For better signal handling",
+    "ext-curl": "For better http client",
+    "ext-parallel": "For better parallel processing",
+    "ext-zlib": "For better compression",
+    "cloudtay/ripple-http": "For better http client",
+    "cloudtay/ripple-websocket": "For better websocket client",
+    "cloudtay/ripple-rdo": "For better mysql client"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

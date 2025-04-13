@@ -1,10 +1,14 @@
 <?php
+set_time_limit(300);
+
 $api_uri = 'http://192.168.31.5';
 $api_key = 'your_api_key';
-$source_image = __DIR__ . '/image/test.jpg';
-$target_image = __DIR__ . '/output/test.jpg';
 
-try {
+// 一次运行多种格式压缩图片
+foreach (['jpg', 'png', 'webp', 'avif', 'gif', 'svg'] as $ext) {
+    $source_image = __DIR__ . '/image/test.' . $ext;
+    $target_image = __DIR__ . '/output/test.' . $ext;
+
     $file_mime = mime_content_type($source_image);
     $file_size = filesize($source_image);
     $file_name = pathinfo($source_image, PATHINFO_BASENAME);
@@ -45,17 +49,15 @@ try {
             curl_exec($ch);
             curl_close($ch);
             fclose($fp);
-
+            // 输出压缩率，保留两位小数
             $compressionRate = (($file_size - $compress['size']) / $file_size) * 100;
-            echo '压缩率是: ' . number_format($compressionRate, 2) . '%'; // 输出压缩率，保留两位小数
-        } elseif ($overwrite == false) {
+            echo "<p>【output/{$file_name}】压缩率: " . number_format($compressionRate, 2) . '%</p>';
+        }
+        else {
             copy($source_image, $target_image);
-
-            echo '压缩后大于原始图片，已跳过压缩。';
+            echo "<p>【output/{$file_name}】压缩后大于原始图片，已跳过压缩。</p>";
         }
     } else {
-        throw new \Exception($compress['message']);
+        echo "<p>【output/{$file_name}】压缩失败：{$compress['message']}</p>";
     }
-} catch (\Exception $e) {
-    echo $e->getMessage();
 }
